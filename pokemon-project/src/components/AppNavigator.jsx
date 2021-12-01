@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
   },
+  title:{
+    cursor:'pointer',
+    color:'white'
+  }
 }));
 
 export default function AppNavigator() {
@@ -20,7 +24,7 @@ export default function AppNavigator() {
     <AppBar className={classes.AppBar} position="fixed">
       <Toolbar>
         <Link to="/" className={classes.link}>
-          <Typography>Pokedex</Typography>
+          <Typography className={classes.title} variant='h4'>Pokedex</Typography>
         </Link>
       </Toolbar>
     </AppBar>

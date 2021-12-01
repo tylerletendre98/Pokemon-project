@@ -2,10 +2,22 @@ import { Card, CardContent, CardMedia, Grid, makeStyles, Typography } from '@mat
 import React from 'react'
 
 const useStyles = makeStyles((theme)=>({
+    card:{
+        cursor:'pointer',
+        backgroundColor:'black',
+        color:'white',
+        "&:hover":{
+            backgroundColor:'rgb(90, 90,90)'
+        }    
+
+    },
     cardMedia:{
         margin:'auto',
         width:130,
         height:130
+    },
+    cardContent:{
+        textAlign:'center'
     }
 }))
 
@@ -15,15 +27,15 @@ export default function PokemonCard(props) {
     const {id,name} = pokemon
 
     return (
-        <Grid item xs={12} sm={2}>
-            <Card>
-                <CardMedia className={classes.cardMedia} image={image}></CardMedia>
-                <CardContent>
-                    <Typography>
-                        {name}
-                    </Typography>
-                </CardContent>
-            </Card>
-        </Grid>
+            <Grid item xs={12} sm={2} key={id} className={classes.grid}>
+                <Card className={classes.card}>
+                    <CardMedia className={classes.cardMedia} image={image}></CardMedia>
+                    <CardContent className={classes.cardContent}>
+                        <Typography>
+                            {name}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Grid>
     )
 }
