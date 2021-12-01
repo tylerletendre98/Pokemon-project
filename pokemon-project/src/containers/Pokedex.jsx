@@ -1,10 +1,13 @@
 import React from "react";
+import { Box } from "@material-ui/core";
 
 const Pokedex = () => {
+  useEffect(() => {}, []);
+
   return (
-    <div>
-      <h1>Pokedex</h1>
-    </div>
+    <Box>
+      <h1>something</h1>
+    </Box>
   );
 };
 
