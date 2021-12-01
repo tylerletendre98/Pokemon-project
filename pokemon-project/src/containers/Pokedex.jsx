@@ -8,7 +8,8 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles((theme)=>({
   pokedexContainer:{
     textAlign:'center',
-    padding:'80px 10px 0px 10px'
+    padding:'70px 10px 0px 10px',
+    backgroundColor:'rgb(68,68,68)'
   }
 }))
 
@@ -16,7 +17,7 @@ const Pokedex = () => {
   const classes = useStyles()
   const [pokemonData, setpokemonData] = useState([]);
   useEffect(() => {
-    axios.get(`${POKEMON_API_URL}?limit=100`).then((res) => {
+    axios.get(`${POKEMON_API_URL}?limit=50`).then((res) => {
       if (res.status >= 200 && res.status < 3000) {
         const { results } = res.data;
         let newPokemonData = [];
