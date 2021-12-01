@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Box, CircularProgress } from "@material-ui/core";
-import axios from "axios";
+import { Box, CircularProgress, Grid } from "@material-ui/core";
+import axios from 'axios'
 import { POKEMON_API_URL, IMAGE_API_URL } from "../config";
+import PokemonCard from "../components/PokemonCard";
 
 const Pokedex = () => {
   const [pokemonData, setpokemonData] = useState([]);
   useEffect(() => {
-    axios.get(`${POKEMON_API_URL}?limit=800`).then((res) => {
+    axios.get(`${POKEMON_API_URL}?limit=100`).then((res) => {
       if (res.status >= 200 && res.status < 3000) {
         const { results } = res.data;
         let newPokemonData = [];
@@ -27,11 +28,15 @@ const Pokedex = () => {
   return (
     <Box>
       {pokemonData ? (
-        pokemonData.map((pokemon) => {
-          return <h1>{pokemon.name}</h1>;
-        })
+        <Grid container spacing={2}>
+          {pokemonData.map((pokemon)=>{
+            return(
+             <PokemonCard  pokemon={pokemon}  image={pokemon.url}/>
+            )
+          })}
+        </Grid>
       ) : (
-        <CircularProgress />
+        <CircularProgress style={{marginTop:100}} />
       )}
     </Box>
   );
